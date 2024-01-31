@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'paper-dashboard/assets/img/apple-icon.png' %} " />
+  <link rel="icon" type="image/png" href="{% static 'paper-dashboard/assets/img/favicon.png' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Scores
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons   
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"> -->
+  <!-- CSS Files -->
+  <link href="{% static 'paper-dashboard/assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'paper-dashboard/assets/css/paper-dashboard.css' %}" rel="stylesheet" />
+</head>
+
+<body> 
+  <div class="wrapper ">
+    <!-- Sidebar -->
+    <div class="sidebar" data-color="white" data-active-color="danger">
+      <div class="logo">
+        <a href="https://thespartainternational.com" class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <img src="{% static 'paper-dashboard/assets/img/logo-small.png' %}">
+          </div>
+          <!-- <p>CT</p> -->
+        </a>
+        <a href="https://thespartainternational.com" class="simple-text logo-normal">
+          Sparta
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+            <a href="./dashboard.html">
+              <i class="nc-icon nc-bank"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   <!-- End Sidebar -->
+
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;"></a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+
+      <div class="content">
+         <div class="row">
+            
+            <div class="col-md-12">
+               <div class="card">
+                  <div class="card-header">
+                     <h4 class="card-title">Gross Scores</h4>
+                     <button id="sparta-edit-scores-btn" class="sparta-btn btn btn-info btn-fill btn-wd">Edit</button>
+                     <button id="sparta-submit-scores-btn" hidden="true" disabled="true" type="submit" class="sparta-btn btn btn-info btn-fill btn-wd">Submit Changes</button>
+                     <button id="sparta-add-row-scores-btn" hidden="true" disabled="true" class="sparta-btn btn btn-info btn-fill btn-wd">Add Player</button>
+                   </div>   
+                  <div class="card-body">
+                     <div class="table-responsive">
+                        <table class="table">
+                          <thead class=" text-primary">
+                            <th>Name</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                            <th>9</th>
+                            <th>Front</th>
+                            <th>10</th>
+                            <th>11</th>
+                            <th>12</th>
+                            <th>13</th>
+                            <th>14</th>
+                            <th>15</th>
+                            <th>16</th>
+                            <th>17</th>
+                            <th>18</th>
+                            <th>Back</th>
+                            <th>Total</th>
+                          </thead>
+                          <tbody id="sparta-gross-scores-table">
+                            {% for r in rounds %}
+                                <tr>
+                                  <td>{{ r.player.name }}</td>
+                                  <td>{{ r.hole1 }}</td>
+                                  <td>{{ r.hole2 }}</td>
+                                  <td>{{ r.hole3 }}</td>
+                                  <td>{{ r.hole4 }}</td>
+                                  <td>{{ r.hole5 }}</td>
+                                  <td>{{ r.hole6 }}</td>
+                                  <td>{{ r.hole7 }}</td>
+                                  <td>{{ r.hole8 }}</td>
+                                  <td>{{ r.hole9 }}</td>
+                                  <td>{{ r.get_front9_score }}</td>
+                                  <td>{{ r.hole10 }}</td>
+                                  <td>{{ r.hole11 }}</td>
+                                  <td>{{ r.hole12 }}</td>
+                                  <td>{{ r.hole13 }}</td>
+                                  <td>{{ r.hole14 }}</td>
+                                  <td>{{ r.hole15 }}</td>
+                                  <td>{{ r.hole16 }}</td>
+                                  <td>{{ r.hole17 }}</td>
+                                  <td>{{ r.hole18 }}</td>
+                                  <td>{{ r.get_back9_score }}</td>
+                                  <td>{{ r.get_total_score }}</td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="col-md-12">
+               <div class="card">
+                  <div class="card-header">
+                     <h4 class="card-title">Net Scores</h4>
+                   </div>
+                  <div class="card-body">
+                     <div class="table-responsive">
+                        <table class="table">
+                           <thead class=" text-primary">
+                              <th>Name</th>
+                              <th>1</th>
+                              <th>2</th>
+                              <th>3</th>
+                              <th>4</th>
+                              <th>5</th>
+                              <th>6</th>
+                              <th>7</th>
+                              <th>8</th>
+                              <th>9</th>
+                              <th>Front</th>
+                              <th>10</th>
+                              <th>11</th>
+                              <th>12</th>
+                              <th>13</th>
+                              <th>14</th>
+                              <th>15</th>
+                              <th>16</th>
+                              <th>17</th>
+                              <th>18</th>
+                              <th>Back</th>
+                              <th>Total</th>
+                           </thead>
+                           <tbody id="sparta-net-scores-table">
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+        </div>
+      </div>
+      
+      <footer class="footer footer-black  footer-white ">
+      </footer>
+    </div>
+  </div>
+
+  <!-- Helper JavaScript -->
+  <script type="text/javascript" src="{% static 'table_helper.js' %}"></script>
+
+  <!--   Core JS Files   -->
+  <script src="{% static 'paper-dashboard/assets/js/core/jquery.min.js' %}"></script>
+  <script src="{% static 'paper-dashboard/assets/js/core/popper.min.js' %}"></script>
+  <script src="{% static 'paper-dashboard/assets/js/core/bootstrap.min.js' %}"></script>
+  <script src="{% static 'paper-dashboard/assets/js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+  <!-- Chart JS -->
+  <script src="{% static 'paper-dashboard/assets/js/plugins/chartjs.min.js' %}"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="{% static 'paper-dashboard/assets/js/paper-dashboard.min.js' %}" type="text/javascript"></script>
+
+</body>
+
+
+<!--
+{% if latest_question_list %}
+   <ul>
+   {% for question in latest_question_list %}
+      <li><a href="{% url 'polls:detail' question.id %}">{{question.question_text }}</a></li>
+   {% endfor %}
+   </ul>
+{% else %}
+   <p>No polls are available.</p>
+{% endif %}
+-->

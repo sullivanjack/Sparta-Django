@@ -1,0 +1,15 @@
+.numberCircle {
+    display: inline-block;
+    line-height: 0px;
+    border-radius: 50%;
+    border: 1px solid;
+    font-size: 13px;
+  }
+  
+  .numberCircle span {
+    display: inline-block;
+    padding-top: 50%;
+    padding-bottom: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+  }

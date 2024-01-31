@@ -1,0 +1,92 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">{{ title }}</h4>
+        </div>   
+        <div class="card-body">
+            <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                <th>Name</th>
+                <th>Handicap</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>Front</th>
+                <th>10</th>
+                <th>11</th>
+                <th>12</th>
+                <th>13</th>
+                <th>14</th>
+                <th>15</th>
+                <th>16</th>
+                <th>17</th>
+                <th>18</th>
+                <th>Back</th>
+                <th>Total</th>
+                </thead>
+                <tbody id="sparta-gross-scores-table">
+                {% for r in all_player_rounds %}
+                    <tr>
+                        {% if use_gross_scores %}
+                            <td>{{ r.player.name }}</td>
+                            <td>{{ r.get_handicap }}</td>
+                            <td><span class="numberCircle"><span>{{ r.get_net_hole1_score }}</td></span></span></td>
+                            <td>{{ r.get_net_hole2_score }}</td>
+                            <td>{{ r.get_net_hole3_score }}</td>
+                            <td>{{ r.get_net_hole4_score }}</td>
+                            <td>{{ r.get_net_hole5_score }}</td>
+                            <td>{{ r.get_net_hole6_score }}</td>
+                            <td>{{ r.get_net_hole7_score }}</td>
+                            <td>{{ r.get_net_hole8_score }}</td>
+                            <td>{{ r.get_net_hole9_score }}</td>
+                            <td>{{ r.get_front9_net_score }}</td>
+                            <td>{{ r.get_net_hole10_score }}</td>
+                            <td>{{ r.get_net_hole11_score }}</td>
+                            <td>{{ r.get_net_hole12_score }}</td>
+                            <td>{{ r.get_net_hole13_score }}</td>
+                            <td>{{ r.get_net_hole14_score }}</td>
+                            <td>{{ r.get_net_hole15_score }}</td>
+                            <td>{{ r.get_net_hole16_score }}</td>
+                            <td>{{ r.get_net_hole17_score }}</td>
+                            <td>{{ r.get_net_hole18_score }}</td>
+                            <td>{{ r.get_back9_net_score }}</td>
+                            <td>{{ r.get_total_net_score }}</td>
+                        {% else %}
+                            <td>{{ r.player.name }}</td>
+                            <td>{{ r.get_handicap }}</td>
+                            <td>{{ r.hole1 }}</td>
+                            <td>{{ r.hole2 }}</td>
+                            <td>{{ r.hole3 }}</td>
+                            <td>{{ r.hole4 }}</td>
+                            <td>{{ r.hole5 }}</td>
+                            <td>{{ r.hole6 }}</td>
+                            <td>{{ r.hole7 }}</td>
+                            <td>{{ r.hole8 }}</td>
+                            <td>{{ r.hole9 }}</td>
+                            <td>{{ r.get_front9_gross_score }}</td>
+                            <td>{{ r.hole10 }}</td>
+                            <td>{{ r.hole11 }}</td>
+                            <td>{{ r.hole12 }}</td>
+                            <td>{{ r.hole13 }}</td>
+                            <td>{{ r.hole14 }}</td>
+                            <td>{{ r.hole15 }}</td>
+                            <td>{{ r.hole16 }}</td>
+                            <td>{{ r.hole17 }}</td>
+                            <td>{{ r.hole18 }}</td>
+                            <td>{{ r.get_back9_gross_score }}</td>
+                            <td>{{ r.get_total_gross_score }}</td>
+                        {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>

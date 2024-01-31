@@ -1,0 +1,26 @@
+{% load static %}
+<div class="sidebar" data-color="white" data-active-color="danger">
+    <div class="logo">
+    <a href="https://thespartainternational.com" class="simple-text logo-mini">
+        <div class="logo-image-small">
+        <img src="{% static 'paper-dashboard/assets/img/logo-small.png' %}">
+        </div>
+        <p>CT</p> 
+    </a>
+    <a href="https://thespartainternational.com" class="simple-text logo-normal">
+        Sparta
+    </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            {% for y in all_years %}
+            <li>
+                <a href="/polls/round/{{ y }}/1">
+                <i class="nc-icon nc-bank"></i>
+                <p>{{ y }}</p>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

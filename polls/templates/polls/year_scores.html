@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  {% load sparta_tags %}
+
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'paper-dashboard/assets/img/apple-icon.png' %} " />
+  <link rel="icon" type="image/png" href="{% static 'paper-dashboard/assets/img/favicon.png' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Scores
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons   
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"> -->
+  <!-- CSS Files -->
+  <link href="{% static 'paper-dashboard/assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'paper-dashboard/assets/css/paper-dashboard.css' %}" rel="stylesheet" />
+  <link href="{% static 'extras.css' %}" rel="stylesheet" />
+</head>
+
+<body> 
+  <div class="wrapper ">
+  
+    {% show_sidebar %}
+
+    <div class="main-panel">
+      {% show_navbar %}
+
+      <div class="content">
+         <div class="row">            
+            <a href="/polls/round/{{ current_year }}/1"><button type="button" class="btn btn-default">Round 1</button></a>
+            <a href="/polls/round/{{ current_year }}/2"><button type="button" class="btn btn-default">Round 2</button></a>
+            <a href="/polls/round/{{ current_year }}/3"><button type="button" class="btn btn-default">Round 3</button></a>
+
+            {% show_scoreboard title="Gross Scores" current_year=current_year current_round=current_round %}
+
+            {% show_scoreboard title="Net Scores" add_handicap=True current_year=current_year current_round=current_round %}    
+        </div>
+      </div>
+
+      {% show_footer %} 
+
+    </div>
+  </div>
+  {% javascript_includes %}
+</body>
+
+
+<!--
+{% if latest_question_list %}
+   <ul>
+   {% for question in latest_question_list %}
+      <li><a href="{% url 'polls:detail' question.id %}">{{question.question_text }}</a></li>
+   {% endfor %}
+   </ul>
+{% else %}
+   <p>No polls are available.</p>
+{% endif %}
+-->
